@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: apple-kaitori-finder
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: python mobile_server.py --cloud
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 18 買取価格 ダッシュボード</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --border-color: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Yu Gothic", "Meiryo", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header h1 { font-size: 1.8rem; font-weight: 800; color: #1e293b; }
+        .badge-time {
+            background: #e2e8f0;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .kpi-title { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
+        .kpi-val { font-size: 1.6rem; font-weight: 800; color: #1e293b; }
+        .kpi-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .controls {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .controls input, .controls select {
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: #fff;
+            outline: none;
+        }
+        .controls input:focus, .controls select:focus { border-color: var(--primary); }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-sort { background: #f1f5f9; color: #334155; }
+        .btn-sort.active { background: var(--primary); color: #fff; }
+        .table-wrap {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            white-space: nowrap;
+        }
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        tr:hover { background-color: #f8fafc; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .center { text-align: center; }
+        .tag-best {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .tag-diff {
+            background: #fef3c7;
+            color: #b45309;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .price-highlight { font-weight: 800; color: #047857; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>📱 iPhone 18 買取価格 リアルタイムダッシュボード</h1>
+            <p style="color:var(--text-muted); font-size:0.9rem;">主要 13 店舗の最新買取価格・価格差・利益分析</p>
+        </div>
+        <div class="badge-time">更新: 2026-10-11 11:54</div>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-title">比較対象モデル</div>
+            <div class="kpi-val">64 <span style="font-size:1rem; font-weight:normal;">機種</span></div>
+            <div class="kpi-sub">iPhone 18 Pro Max / Pro</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">調査買取店舗数</div>
+            <div class="kpi-val">13 <span style="font-size:1rem; font-weight:normal;">店舗</span></div>
+            <div class="kpi-sub">買取ルデヤ, 森森買取, 一丁目, wiki等</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">最高買取価格</div>
+            <div class="kpi-val" style="color:#059669;">397,500円</div>
+            <div class="kpi-sub">iPhone 18 Pro Max 2TB バーガンディ (買取ルデヤ)</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">最大店舗間価格差</div>
+            <div class="kpi-val" style="color:#d97706;">+27,000円</div>
+            <div class="kpi-sub">iPhone 18 Pro Max 1TB バーガンディ (買取一丁目 vs ドラゴンモバイル)</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="機種名、容量、カラー、JANで検索..." style="min-width: 250px;">
+        <select id="modelSelect">
+            <option value="">全モデル</option>
+            <option value="iPhone 18 Pro Max">iPhone 18 Pro Max</option>
+            <option value="iPhone 18 Pro">iPhone 18 Pro</option>
+        </select>
+        <select id="capacitySelect">
+            <option value="">全容量</option>
+            <option value="256GB">256GB</option>
+            <option value="512GB">512GB</option>
+            <option value="1TB">1TB</option>
+            <option value="2TB">2TB</option>
+        </select>
+        <button class="btn btn-sort active" id="btnSortPrice" onclick="setSort('price')">最高価格順</button>
+        <button class="btn btn-sort" id="btnSortDiff" onclick="setSort('diff')">店舗間差額順</button>
+        <button class="btn btn-sort" id="btnSortRate" onclick="setSort('rate')">還元率順</button>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>機種名</th>
+                    <th class="center">容量</th>
+                    <th>カラー</th>
+                    <th class="num">最高買取価格</th>
+                    <th class="center">最高買取店</th>
+                    <th class="num">店舗間差額</th>
+                    <th class="num">想定定価</th>
+                    <th class="num">差益(利益)</th>
+                    <th class="num">還元率</th>
+                    <th class="center">JANコード</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const rawData = [{"model": "iPhone 18 Pro", "capacity": "2TB", "color": "バーガンディ", "jan": "-", "best_store": "買取ソムリエ", "best_price": 381000, "price_diff": 11000, "official_price": 389800, "profit_jpy": -8800, "profit_rate": 97.7, "store_prices": {"買取一丁目": 380000, "モバイル一番": 380000, "携帯空間": 370500, "買取商店": 380000, "モバステ": 377000, "森森買取": 380000, "買取楽園": 370000, "買取ルデヤ": 380000, "買取wiki": 380000, "ゲストモバイル": 380000, "ドラゴンモバイル": 370000, "買取ソムリエ": 381000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "バーガンディ", "jan": "4549995734287", "best_store": "買取ルデヤ", "best_price": 380500, "price_diff": 500, "official_price": 389800, "profit_jpy": -9300, "profit_rate": 97.6, "store_prices": {"買取ルデヤ": 380500, "森森買取": 380000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "ブラック", "jan": "-", "best_store": "買取一丁目", "best_price": 380000, "price_diff": 20000, "official_price": 389800, "profit_jpy": -9800, "profit_rate": 97.5, "store_prices": {"買取一丁目": 380000, "モバイル一番": 370000, "携帯空間": 360500, "買取商店": 370000, "モバステ": 365000, "森森買取": 370000, "買取楽園": 360000, "買取ルデヤ": 370000, "買取wiki": 370000, "ゲストモバイル": 370000, "ドラゴンモバイル": 360000, "買取ソムリエ": 371000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "グレイシャー", "jan": "-", "best_store": "買取ソムリエ", "best_price": 371000, "price_diff": 11000, "official_price": 389800, "profit_jpy": -18800, "profit_rate": 95.2, "store_prices": {"買取一丁目": 370000, "モバイル一番": 370000, "携帯空間": 360500, "買取商店": 370000, "モバステ": 365000, "森森買取": 370000, "買取楽園": 360000, "買取ルデヤ": 370000, "買取wiki": 370000, "ゲストモバイル": 370000, "ドラゴンモバイル": 360000, "買取ソムリエ": 371000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "シルバー", "jan": "-", "best_store": "買取ソムリエ", "best_price": 371000, "price_diff": 11000, "official_price": 389800, "profit_jpy": -18800, "profit_rate": 95.2, "store_prices": {"買取一丁目": 370000, "モバイル一番": 370000, "携帯空間": 360500, "買取商店": 370000, "モバステ": 365000, "森森買取": 370000, "買取楽園": 360000, "買取ルデヤ": 370000, "買取wiki": 370000, "ゲストモバイル": 370000, "ドラゴンモバイル": 360000, "買取ソムリエ": 371000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "ブラック", "jan": "4549995734263", "best_store": "買取ルデヤ", "best_price": 370500, "price_diff": 500, "official_price": 389800, "profit_jpy": -19300, "profit_rate": 95.0, "store_prices": {"買取ルデヤ": 370500, "森森買取": 370000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "グレイシャー", "jan": "4549995734294", "best_store": "買取ルデヤ", "best_price": 370500, "price_diff": 500, "official_price": 389800, "profit_jpy": -19300, "profit_rate": 95.0, "store_prices": {"買取ルデヤ": 370500, "森森買取": 370000}}, {"model": "iPhone 18 Pro", "capacity": "2TB", "color": "シルバー", "jan": "4549995734270", "best_store": "買取ルデヤ", "best_price": 370500, "price_diff": 500, "official_price": 389800, "profit_jpy": -19300, "profit_rate": 95.0, "store_prices": {"買取ルデヤ": 370500, "森森買取": 370000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "バーガンディ", "jan": "4549995734249", "best_store": "森森買取", "best_price": 310000, "price_diff": 1500, "official_price": 319800, "profit_jpy": -9800, "profit_rate": 96.9, "store_prices": {"買取ルデヤ": 308500, "森森買取": 310000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "バーガンディ", "jan": "-", "best_store": "買取一丁目", "best_price": 310000, "price_diff": 19500, "official_price": 319800, "profit_jpy": -9800, "profit_rate": 96.9, "store_prices": {"買取一丁目": 310000, "モバイル一番": 300000, "携帯空間": 290500, "買取商店": 308000, "モバステ": 300000, "森森買取": 310000, "買取楽園": 305000, "買取ルデヤ": 308000, "モバイルミックス": 310000, "買取wiki": 305000, "ゲストモバイル": 308000, "ドラゴンモバイル": 295000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "ブラック", "jan": "4549995734225", "best_store": "買取ルデヤ", "best_price": 295500, "price_diff": 500, "official_price": 319800, "profit_jpy": -24300, "profit_rate": 92.4, "store_prices": {"買取ルデヤ": 295500, "森森買取": 295000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "グレイシャー", "jan": "4549995734256", "best_store": "買取ルデヤ", "best_price": 295500, "price_diff": 500, "official_price": 319800, "profit_jpy": -24300, "profit_rate": 92.4, "store_prices": {"買取ルデヤ": 295500, "森森買取": 295000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "シルバー", "jan": "4549995734232", "best_store": "買取ルデヤ", "best_price": 295500, "price_diff": 500, "official_price": 319800, "profit_jpy": -24300, "profit_rate": 92.4, "store_prices": {"買取ルデヤ": 295500, "森森買取": 295000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "グレイシャー", "jan": "-", "best_store": "買取一丁目", "best_price": 295000, "price_diff": 15000, "official_price": 319800, "profit_jpy": -24800, "profit_rate": 92.2, "store_prices": {"買取一丁目": 295000, "モバイル一番": 290000, "携帯空間": 290500, "買取商店": 295000, "モバステ": 290000, "森森買取": 295000, "買取楽園": 295000, "買取ルデヤ": 295000, "買取wiki": 292000, "ゲストモバイル": 293000, "ドラゴンモバイル": 280000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "シルバー", "jan": "-", "best_store": "買取一丁目", "best_price": 295000, "price_diff": 15000, "official_price": 319800, "profit_jpy": -24800, "profit_rate": 92.2, "store_prices": {"買取一丁目": 295000, "モバイル一番": 290000, "携帯空間": 290500, "買取商店": 295000, "モバステ": 288000, "森森買取": 295000, "買取楽園": 295000, "買取ルデヤ": 295000, "買取wiki": 292000, "ゲストモバイル": 293000, "ドラゴンモバイル": 280000}}, {"model": "iPhone 18 Pro", "capacity": "1TB", "color": "ブラック", "jan": "-", "best_store": "買取一丁目", "best_price": 295000, "price_diff": 15000, "official_price": 319800, "profit_jpy": -24800, "profit_rate": 92.2, "store_prices": {"買取一丁目": 295000, "モバイル一番": 290000, "携帯空間": 290500, "買取商店": 295000, "モバステ": 290000, "森森買取": 295000, "買取楽園": 295000, "買取ルデヤ": 295000, "買取wiki": 292000, "ゲストモバイル": 293000, "ドラゴンモバイル": 280000}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "バーガンディ", "jan": "-", "best_store": "モバイルミックス", "best_price": 249000, "price_diff": 22500, "official_price": 254800, "profit_jpy": -5800, "profit_rate": 97.7, "store_prices": {"買取一丁目": 248500, "モバイル一番": 245000, "携帯空間": 226500, "買取商店": 248000, "モバステ": 245000, "森森買取": 248500, "買取楽園": 245000, "買取ルデヤ": 248000, "モバイルミックス": 249000, "買取wiki": 245000, "ゲストモバイル": 246000, "ドラゴンモバイル": 240000, "買取ソムリエ": 248500}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "バーガンディ", "jan": "4549995734201", "best_store": "買取ルデヤ", "best_price": 248500, "price_diff": 0, "official_price": 254800, "profit_jpy": -6300, "profit_rate": 97.5, "store_prices": {"買取ルデヤ": 248500, "森森買取": 248500}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "ブラック", "jan": "4549995734188", "best_store": "森森買取", "best_price": 238000, "price_diff": 2500, "official_price": 254800, "profit_jpy": -16800, "profit_rate": 93.4, "store_prices": {"買取ルデヤ": 235500, "森森買取": 238000}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "グレイシャー", "jan": "4549995734218", "best_store": "森森買取", "best_price": 238000, "price_diff": 2500, "official_price": 254800, "profit_jpy": -16800, "profit_rate": 93.4, "store_prices": {"買取ルデヤ": 235500, "森森買取": 238000}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "グレイシャー", "jan": "-", "best_store": "買取一丁目", "best_price": 238000, "price_diff": 13000, "official_price": 254800, "profit_jpy": -16800, "profit_rate": 93.4, "store_prices": {"買取一丁目": 238000, "モバイル一番": 230000, "携帯空間": 225500, "買取商店": 235000, "モバステ": 230000, "森森買取": 238000, "買取楽園": 230000, "買取ルデヤ": 235000, "モバイルミックス": 238000, "買取wiki": 233000, "ゲストモバイル": 235000, "ドラゴンモバイル": 225000, "買取ソムリエ": 238000}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "ブラック", "jan": "-", "best_store": "買取一丁目", "best_price": 238000, "price_diff": 13000, "official_price": 254800, "profit_jpy": -16800, "profit_rate": 93.4, "store_prices": {"買取一丁目": 238000, "モバイル一番": 230000, "携帯空間": 225500, "買取商店": 235000, "モバステ": 230000, "森森買取": 238000, "買取楽園": 230000, "買取ルデヤ": 235000, "モバイルミックス": 238000, "買取wiki": 233000, "ゲストモバイル": 235000, "ドラゴンモバイル": 225000, "買取ソムリエ": 238000}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "シルバー", "jan": "4549995734195", "best_store": "森森買取", "best_price": 232000, "price_diff": 2500, "official_price": 254800, "profit_jpy": -22800, "profit_rate": 91.1, "store_prices": {"買取ルデヤ": 229500, "森森買取": 232000}}, {"model": "iPhone 18 Pro", "capacity": "512GB", "color": "シルバー", "jan": "-", "best_store": "買取一丁目", "best_price": 232000, "price_diff": 10000, "official_price": 254800, "profit_jpy": -22800, "profit_rate": 91.1, "store_prices": {"買取一丁目": 232000, "モバイル一番": 224000, "携帯空間": 222500, "買取商店": 229000, "モバステ": 222000, "森森買取": 232000, "買取楽園": 224000, "買取ルデヤ": 229000, "買取wiki": 229000, "ゲストモバイル": 229000, "ドラゴンモバイル": 225000, "買取ソムリエ": 232000}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "バーガンディ", "jan": "4549995734164", "best_store": "買取ルデヤ", "best_price": 212500, "price_diff": 0, "official_price": 219800, "profit_jpy": -7300, "profit_rate": 96.7, "store_prices": {"買取ルデヤ": 212500, "森森買取": 212500}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "バーガンディ", "jan": "-", "best_store": "買取一丁目", "best_price": 212500, "price_diff": 500, "official_price": 219800, "profit_jpy": -7300, "profit_rate": 96.7, "store_prices": {"買取一丁目": 212500, "モバイル一番": 212000, "携帯空間": 212000, "買取商店": 212000, "モバステ": 212000, "森森買取": 212500, "買取楽園": 212000, "買取ルデヤ": 212000, "モバイルミックス": 212500, "買取wiki": 212000, "ゲストモバイル": 212000, "ドラゴンモバイル": 212000, "買取ソムリエ": 212500}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "グレイシャー", "jan": "-", "best_store": "買取一丁目", "best_price": 212500, "price_diff": 17500, "official_price": 219800, "profit_jpy": -7300, "profit_rate": 96.7, "store_prices": {"買取一丁目": 212500, "モバイル一番": 196000, "携帯空間": 197700, "買取商店": 195000, "モバステ": 196000, "森森買取": 195000, "買取楽園": 195000, "買取ルデヤ": 195000, "モバイルミックス": 195000, "買取wiki": 196000, "ゲストモバイル": 196000, "ドラゴンモバイル": 195000, "買取ソムリエ": 197500}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "ブラック", "jan": "-", "best_store": "買取一丁目", "best_price": 212500, "price_diff": 17500, "official_price": 219800, "profit_jpy": -7300, "profit_rate": 96.7, "store_prices": {"買取一丁目": 212500, "モバイル一番": 196000, "携帯空間": 197000, "買取商店": 195000, "モバステ": 196000, "森森買取": 195000, "買取楽園": 195000, "買取ルデヤ": 195000, "モバイルミックス": 195000, "買取wiki": 196000, "ゲストモバイル": 196000, "ドラゴンモバイル": 195000, "買取ソムリエ": 197500}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "ブラック", "jan": "4549995734140", "best_store": "買取ルデヤ", "best_price": 195500, "price_diff": 500, "official_price": 219800, "profit_jpy": -24300, "profit_rate": 88.9, "store_prices": {"買取ルデヤ": 195500, "森森買取": 195000}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "グレイシャー", "jan": "4549995734171", "best_store": "買取ルデヤ", "best_price": 195500, "price_diff": 500, "official_price": 219800, "profit_jpy": -24300, "profit_rate": 88.9, "store_prices": {"買取ルデヤ": 195500, "森森買取": 195000}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "シルバー", "jan": "-", "best_store": "買取ソムリエ", "best_price": 195500, "price_diff": 4500, "official_price": 219800, "profit_jpy": -24300, "profit_rate": 88.9, "store_prices": {"買取一丁目": 194000, "モバイル一番": 193000, "携帯空間": 191500, "買取商店": 191000, "モバステ": 192000, "森森買取": 194000, "買取楽園": 192000, "買取ルデヤ": 191000, "買取wiki": 193000, "ゲストモバイル": 192000, "ドラゴンモバイル": 191000, "買取ソムリエ": 195500}}, {"model": "iPhone 18 Pro", "capacity": "256GB", "color": "シルバー", "jan": "4549995734157", "best_store": "森森買取", "best_price": 194000, "price_diff": 2500, "official_price": 219800, "profit_jpy": -25800, "profit_rate": 88.3, "store_prices": {"買取ルデヤ": 191500, "森森買取": 194000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "バーガンディ", "jan": "4549995735246", "best_store": "買取ルデヤ", "best_price": 397500, "price_diff": 2500, "official_price": 449800, "profit_jpy": -52300, "profit_rate": 88.4, "store_prices": {"買取ルデヤ": 397500, "森森買取": 395000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "バーガンディ", "jan": "-", "best_store": "買取一丁目", "best_price": 397000, "price_diff": 12000, "official_price": 449800, "profit_jpy": -52800, "profit_rate": 88.3, "store_prices": {"買取一丁目": 397000, "モバイル一番": 395000, "携帯空間": 385500, "買取商店": 397000, "モバステ": 395000, "森森買取": 395000, "買取楽園": 385000, "買取ルデヤ": 397000, "モバイルミックス": 397000, "買取wiki": 396000, "ゲストモバイル": 396000, "ドラゴンモバイル": 385000, "買取ソムリエ": 397000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "グレイシャー", "jan": "-", "best_store": "買取ソムリエ", "best_price": 387000, "price_diff": 12000, "official_price": 449800, "profit_jpy": -62800, "profit_rate": 86.0, "store_prices": {"買取一丁目": 385000, "モバイル一番": 385000, "携帯空間": 375500, "買取商店": 385000, "モバステ": 383000, "森森買取": 385000, "買取楽園": 375000, "買取ルデヤ": 385000, "買取wiki": 386000, "ゲストモバイル": 384000, "ドラゴンモバイル": 380000, "買取ソムリエ": 387000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "シルバー", "jan": "-", "best_store": "買取ソムリエ", "best_price": 387000, "price_diff": 12000, "official_price": 449800, "profit_jpy": -62800, "profit_rate": 86.0, "store_prices": {"買取一丁目": 385000, "モバイル一番": 385000, "携帯空間": 375500, "買取商店": 385000, "モバステ": 380000, "森森買取": 385000, "買取楽園": 375000, "買取ルデヤ": 385000, "買取wiki": 386000, "ゲストモバイル": 384000, "ドラゴンモバイル": 380000, "買取ソムリエ": 387000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "ブラック", "jan": "-", "best_store": "買取ソムリエ", "best_price": 387000, "price_diff": 12000, "official_price": 449800, "profit_jpy": -62800, "profit_rate": 86.0, "store_prices": {"買取一丁目": 385000, "モバイル一番": 385000, "携帯空間": 375500, "買取商店": 385000, "モバステ": 383000, "森森買取": 385000, "買取楽園": 375000, "買取ルデヤ": 385000, "買取wiki": 386000, "ゲストモバイル": 384000, "ドラゴンモバイル": 380000, "買取ソムリエ": 387000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "ブラック", "jan": "4549995735147", "best_store": "買取ルデヤ", "best_price": 385500, "price_diff": 500, "official_price": 449800, "profit_jpy": -64300, "profit_rate": 85.7, "store_prices": {"買取ルデヤ": 385500, "森森買取": 385000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "グレイシャー", "jan": "4549995735291", "best_store": "買取ルデヤ", "best_price": 385500, "price_diff": 500, "official_price": 449800, "profit_jpy": -64300, "profit_rate": 85.7, "store_prices": {"買取ルデヤ": 385500, "森森買取": 385000}}, {"model": "iPhone 18 Pro Max", "capacity": "2TB", "color": "シルバー", "jan": "4549995735192", "best_store": "買取ルデヤ", "best_price": 385500, "price_diff": 500, "official_price": 449800, "profit_jpy": -64300, "profit_rate": 85.7, "store_prices": {"買取ルデヤ": 385500, "森森買取": 385000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "バーガンディ", "jan": "4549995735048", "best_store": "買取ルデヤ", "best_price": 347500, "price_diff": 500, "official_price": 344800, "profit_jpy": 2700, "profit_rate": 100.8, "store_prices": {"買取ルデヤ": 347500, "森森買取": 347000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "バーガンディ", "jan": "-", "best_store": "買取一丁目", "best_price": 347000, "price_diff": 27000, "official_price": 344800, "profit_jpy": 2200, "profit_rate": 100.6, "store_prices": {"買取一丁目": 347000, "モバイル一番": 338000, "携帯空間": 320500, "買取商店": 347000, "モバステ": 345000, "森森買取": 347000, "買取楽園": 344000, "買取ルデヤ": 347000, "モバイルミックス": 347000, "買取wiki": 339000, "ゲストモバイル": 345000, "ドラゴンモバイル": 320000, "買取ソムリエ": 347000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "ブラック", "jan": "4549995734942", "best_store": "森森買取", "best_price": 331000, "price_diff": 3500, "official_price": 344800, "profit_jpy": -13800, "profit_rate": 96.0, "store_prices": {"買取ルデヤ": 327500, "森森買取": 331000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "ブラック", "jan": "-", "best_store": "森森買取", "best_price": 331000, "price_diff": 11000, "official_price": 344800, "profit_jpy": -13800, "profit_rate": 96.0, "store_prices": {"買取一丁目": 328000, "モバイル一番": 323000, "携帯空間": 320500, "買取商店": 327000, "モバステ": 326000, "森森買取": 331000, "買取楽園": 327000, "買取ルデヤ": 327000, "モバイルミックス": 331000, "買取wiki": 324000, "ゲストモバイル": 325000, "ドラゴンモバイル": 320000, "買取ソムリエ": 331000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "グレイシャー", "jan": "-", "best_store": "買取一丁目", "best_price": 328000, "price_diff": 8000, "official_price": 344800, "profit_jpy": -16800, "profit_rate": 95.1, "store_prices": {"買取一丁目": 328000, "モバイル一番": 323000, "携帯空間": 320500, "買取商店": 327000, "モバステ": 326000, "森森買取": 324000, "買取楽園": 327000, "買取ルデヤ": 327000, "モバイルミックス": 328000, "買取wiki": 324000, "ゲストモバイル": 325000, "ドラゴンモバイル": 320000, "買取ソムリエ": 328000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "グレイシャー", "jan": "4549995735093", "best_store": "買取ルデヤ", "best_price": 327500, "price_diff": 3500, "official_price": 344800, "profit_jpy": -17300, "profit_rate": 95.0, "store_prices": {"買取ルデヤ": 327500, "森森買取": 324000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "シルバー", "jan": "4549995734997", "best_store": "買取ルデヤ", "best_price": 327500, "price_diff": 4500, "official_price": 344800, "profit_jpy": -17300, "profit_rate": 95.0, "store_prices": {"買取ルデヤ": 327500, "森森買取": 323000}}, {"model": "iPhone 18 Pro Max", "capacity": "1TB", "color": "シルバー", "jan": "-", "best_store": "買取商店", "best_price": 327000, "price_diff": 12000, "official_price": 344800, "profit_jpy": -17800, "profit_rate": 94.8, "store_prices": {"買取一丁目": 324000, "モバイル一番": 323000, "携帯空間": 315500, "買取商店": 327000, "モバステ": 322000, "森森買取": 323000, "買取楽園": 325000, "買取ルデヤ": 327000, "モバイルミックス": 324000, "買取wiki": 324000, "ゲストモバイル": 322000, "ドラゴンモバイル": 315000, "買取ソムリエ": 324000}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "バーガンディ", "jan": "4549995734843", "best_store": "森森買取", "best_price": 282000, "price_diff": 500, "official_price": 274800, "profit_jpy": 7200, "profit_rate": 102.6, "store_prices": {"買取ルデヤ": 281500, "森森買取": 282000}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "バーガンディ", "jan": "-", "best_store": "モバステ", "best_price": 282000, "price_diff": 25500, "official_price": 274800, "profit_jpy": 7200, "profit_rate": 102.6, "store_prices": {"買取一丁目": 281000, "モバイル一番": 280000, "携帯空間": 256500, "買取商店": 281000, "モバステ": 282000, "森森買取": 282000, "買取楽園": 280000, "買取ルデヤ": 281000, "モバイルミックス": 282000, "買取wiki": 280000, "ゲストモバイル": 279000, "ドラゴンモバイル": 272000, "買取ソムリエ": 282000}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "グレイシャー", "jan": "-", "best_store": "モバステ", "best_price": 266000, "price_diff": 9500, "official_price": 274800, "profit_jpy": -8800, "profit_rate": 96.8, "store_prices": {"買取一丁目": 265000, "モバイル一番": 262000, "携帯空間": 256500, "買取商店": 262000, "モバステ": 266000, "森森買取": 265500, "買取楽園": 262000, "買取ルデヤ": 262000, "モバイルミックス": 265500, "買取wiki": 265000, "ゲストモバイル": 263000, "ドラゴンモバイル": 262000, "買取ソムリエ": 265500}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "ブラック", "jan": "-", "best_store": "モバステ", "best_price": 266000, "price_diff": 9500, "official_price": 274800, "profit_jpy": -8800, "profit_rate": 96.8, "store_prices": {"買取一丁目": 265000, "モバイル一番": 262000, "携帯空間": 256500, "買取商店": 262000, "モバステ": 266000, "森森買取": 265500, "買取楽園": 262000, "買取ルデヤ": 262000, "モバイルミックス": 265500, "買取wiki": 265000, "ゲストモバイル": 263000, "ドラゴンモバイル": 262000, "買取ソムリエ": 265500}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "ブラック", "jan": "4549995734744", "best_store": "森森買取", "best_price": 265500, "price_diff": 3000, "official_price": 274800, "profit_jpy": -9300, "profit_rate": 96.6, "store_prices": {"買取ルデヤ": 262500, "森森買取": 265500}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "グレイシャー", "jan": "4549995734898", "best_store": "森森買取", "best_price": 265500, "price_diff": 3000, "official_price": 274800, "profit_jpy": -9300, "profit_rate": 96.6, "store_prices": {"買取ルデヤ": 262500, "森森買取": 265500}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "シルバー", "jan": "4549995734799", "best_store": "森森買取", "best_price": 262000, "price_diff": 2500, "official_price": 274800, "profit_jpy": -12800, "profit_rate": 95.3, "store_prices": {"買取ルデヤ": 259500, "森森買取": 262000}}, {"model": "iPhone 18 Pro Max", "capacity": "512GB", "color": "シルバー", "jan": "-", "best_store": "森森買取", "best_price": 262000, "price_diff": 7500, "official_price": 274800, "profit_jpy": -12800, "profit_rate": 95.3, "store_prices": {"買取一丁目": 260000, "モバイル一番": 259000, "携帯空間": 254500, "買取商店": 259000, "モバステ": 259000, "森森買取": 262000, "買取楽園": 259000, "買取ルデヤ": 259000, "モバイルミックス": 260000, "買取wiki": 262000, "ゲストモバイル": 258000, "ドラゴンモバイル": 259000, "買取ソムリエ": 262000}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "バーガンディ", "jan": "4549995734645", "best_store": "買取ルデヤ", "best_price": 244500, "price_diff": 0, "official_price": 239800, "profit_jpy": 4700, "profit_rate": 102.0, "store_prices": {"買取ルデヤ": 244500, "森森買取": 244500}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "バーガンディ", "jan": "-", "best_store": "モバステ", "best_price": 244500, "price_diff": 3500, "official_price": 239800, "profit_jpy": 4700, "profit_rate": 102.0, "store_prices": {"買取一丁目": 244000, "モバイル一番": 244000, "携帯空間": 241000, "買取商店": 244000, "モバステ": 244500, "森森買取": 244500, "買取楽園": 244000, "買取ルデヤ": 244000, "モバイルミックス": 244500, "買取wiki": 243000, "ゲストモバイル": 243000, "ドラゴンモバイル": 242000, "買取ソムリエ": 244500}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "グレイシャー", "jan": "4549995734690", "best_store": "森森買取", "best_price": 229500, "price_diff": 4000, "official_price": 239800, "profit_jpy": -10300, "profit_rate": 95.7, "store_prices": {"買取ルデヤ": 225500, "森森買取": 229500}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "グレイシャー", "jan": "-", "best_store": "モバステ", "best_price": 229500, "price_diff": 4500, "official_price": 239800, "profit_jpy": -10300, "profit_rate": 95.7, "store_prices": {"買取一丁目": 229000, "モバイル一番": 225000, "携帯空間": 225000, "買取商店": 225000, "モバステ": 229500, "森森買取": 229500, "買取楽園": 225000, "買取ルデヤ": 225000, "モバイルミックス": 229500, "買取wiki": 225000, "ゲストモバイル": 225000, "ドラゴンモバイル": 225000, "買取ソムリエ": 229500}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "ブラック", "jan": "-", "best_store": "モバステ", "best_price": 229500, "price_diff": 5500, "official_price": 239800, "profit_jpy": -10300, "profit_rate": 95.7, "store_prices": {"買取一丁目": 225000, "モバイル一番": 225000, "携帯空間": 225000, "買取商店": 225000, "モバステ": 229500, "森森買取": 225000, "買取楽園": 225000, "買取ルデヤ": 225000, "モバイルミックス": 229000, "買取wiki": 225000, "ゲストモバイル": 224000, "ドラゴンモバイル": 225000, "買取ソムリエ": 229000}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "シルバー", "jan": "-", "best_store": "モバイルミックス", "best_price": 227000, "price_diff": 5000, "official_price": 239800, "profit_jpy": -12800, "profit_rate": 94.7, "store_prices": {"買取一丁目": 224000, "モバイル一番": 223000, "携帯空間": 223000, "買取商店": 223000, "モバステ": 225500, "森森買取": 224000, "買取楽園": 223000, "買取ルデヤ": 223000, "モバイルミックス": 227000, "買取wiki": 223000, "ゲストモバイル": 222000, "ドラゴンモバイル": 223000, "買取ソムリエ": 227000}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "ブラック", "jan": "4549995734546", "best_store": "買取ルデヤ", "best_price": 225500, "price_diff": 500, "official_price": 239800, "profit_jpy": -14300, "profit_rate": 94.0, "store_prices": {"買取ルデヤ": 225500, "森森買取": 225000}}, {"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "シルバー", "jan": "4549995734591", "best_store": "森森買取", "best_price": 224000, "price_diff": 500, "official_price": 239800, "profit_jpy": -15800, "profit_rate": 93.4, "store_prices": {"買取ルデヤ": 223500, "森森買取": 224000}}];
+    const allStores = ["ゲストモバイル", "ドラゴンモバイル", "モバイルミックス", "モバイル一番", "モバステ", "携帯空間", "森森買取", "買取wiki", "買取ソムリエ", "買取ルデヤ", "買取一丁目", "買取商店", "買取楽園"];
+    let currentSort = 'price';
+
+    function renderTable() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const modelFilter = document.getElementById('modelSelect').value;
+        const capFilter = document.getElementById('capacitySelect').value;
+
+        let filtered = rawData.filter(it => {
+            const matchSearch = !search || 
+                it.model.toLowerCase().includes(search) || 
+                it.capacity.toLowerCase().includes(search) || 
+                it.color.toLowerCase().includes(search) || 
+                it.jan.includes(search);
+            const matchModel = !modelFilter || it.model === modelFilter;
+            const matchCap = !capFilter || it.capacity === capFilter;
+            return matchSearch && matchModel && matchCap;
+        });
+
+        if (currentSort === 'price') {
+            filtered.sort((a, b) => b.best_price - a.best_price);
+        } else if (currentSort === 'diff') {
+            filtered.sort((a, b) => b.price_diff - a.price_diff);
+        } else if (currentSort === 'rate') {
+            filtered.sort((a, b) => (b.profit_rate || 0) - (a.profit_rate || 0));
+        }
+
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = filtered.map(it => {
+            const diffTag = it.price_diff > 0 
+                ? `<span class="tag-diff">+${it.price_diff.toLocaleString()}円</span>` 
+                : `<span style="color:#94a3b8;">±0円</span>`;
+            const profitStr = it.profit_jpy > 0 ? `+${it.profit_jpy.toLocaleString()}円` : (it.profit_jpy ? `${it.profit_jpy.toLocaleString()}円` : '-');
+            const rateStr = it.profit_rate ? `${it.profit_rate}%` : '-';
+            const officialStr = it.official_price ? `${it.official_price.toLocaleString()}円` : '-';
+
+            return `
+                <tr>
+                    <td><strong>${it.model}</strong></td>
+                    <td class="center"><span style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:600;">${it.capacity}</span></td>
+                    <td>${it.color}</td>
+                    <td class="num price-highlight">${it.best_price.toLocaleString()}円</td>
+                    <td class="center"><span class="tag-best">${it.best_store}</span></td>
+                    <td class="num">${diffTag}</td>
+                    <td class="num" style="color:#64748b;">${officialStr}</td>
+                    <td class="num" style="font-weight:600; color:${it.profit_jpy >= 0 ? '#10b981' : '#64748b'}">${profitStr}</td>
+                    <td class="num" style="font-weight:700; color:${it.profit_rate >= 100 ? '#ef4444' : '#64748b'}">${rateStr}</td>
+                    <td class="center" style="font-family:monospace; color:#64748b; font-size:0.8rem;">${it.jan}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function setSort(type) {
+        currentSort = type;
+        document.querySelectorAll('.btn-sort').forEach(b => b.classList.remove('active'));
+        if (type === 'price') document.getElementById('btnSortPrice').classList.add('active');
+        if (type === 'diff') document.getElementById('btnSortDiff').classList.add('active');
+        if (type === 'rate') document.getElementById('btnSortRate').classList.add('active');
+        renderTable();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderTable);
+    document.getElementById('modelSelect').addEventListener('change', renderTable);
+    document.getElementById('capacitySelect').addEventListener('change', renderTable);
+
+    renderTable();
+</script>
+</body>
+</html>

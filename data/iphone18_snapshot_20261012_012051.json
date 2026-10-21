@@ -1,0 +1,26 @@
+{
+  "scraped_at": "2026-10-12T01:20:51.503385",
+  "total_items": 1,
+  "items": [
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "256GB",
+      "color": "バーガンディ",
+      "part_number": null,
+      "jan": "4549995734645",
+      "best_store": "テスト店",
+      "best_price": 245000,
+      "lowest_store": "テスト店",
+      "lowest_price": 245000,
+      "price_diff": 0,
+      "prev_best_price": null,
+      "price_change": null,
+      "official_price": 239800,
+      "profit_jpy": 5200,
+      "profit_rate": 102.2,
+      "store_prices": {
+        "テスト店": 245000
+      }
+    }
+  ]
+}

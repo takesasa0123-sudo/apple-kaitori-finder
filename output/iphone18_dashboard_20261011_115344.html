@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 18 買取価格 ダッシュボード</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --border-color: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Yu Gothic", "Meiryo", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header h1 { font-size: 1.8rem; font-weight: 800; color: #1e293b; }
+        .badge-time {
+            background: #e2e8f0;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .kpi-title { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
+        .kpi-val { font-size: 1.6rem; font-weight: 800; color: #1e293b; }
+        .kpi-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .controls {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .controls input, .controls select {
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: #fff;
+            outline: none;
+        }
+        .controls input:focus, .controls select:focus { border-color: var(--primary); }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-sort { background: #f1f5f9; color: #334155; }
+        .btn-sort.active { background: var(--primary); color: #fff; }
+        .table-wrap {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            white-space: nowrap;
+        }
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        tr:hover { background-color: #f8fafc; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .center { text-align: center; }
+        .tag-best {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .tag-diff {
+            background: #fef3c7;
+            color: #b45309;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .price-highlight { font-weight: 800; color: #047857; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>📱 iPhone 18 買取価格 リアルタイムダッシュボード</h1>
+            <p style="color:var(--text-muted); font-size:0.9rem;">主要 1 店舗の最新買取価格・価格差・利益分析</p>
+        </div>
+        <div class="badge-time">更新: 2026-10-11 11:53</div>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-title">比較対象モデル</div>
+            <div class="kpi-val">1 <span style="font-size:1rem; font-weight:normal;">機種</span></div>
+            <div class="kpi-sub">iPhone 18 Pro Max / Pro</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">調査買取店舗数</div>
+            <div class="kpi-val">1 <span style="font-size:1rem; font-weight:normal;">店舗</span></div>
+            <div class="kpi-sub">買取ルデヤ, 森森買取, 一丁目, wiki等</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">最高買取価格</div>
+            <div class="kpi-val" style="color:#059669;">245,000円</div>
+            <div class="kpi-sub">iPhone 18 Pro Max 256GB バーガンディ (テスト店)</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">最大店舗間価格差</div>
+            <div class="kpi-val" style="color:#d97706;">+0円</div>
+            <div class="kpi-sub">iPhone 18 Pro Max 256GB バーガンディ (テスト店 vs テスト店)</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="機種名、容量、カラー、JANで検索..." style="min-width: 250px;">
+        <select id="modelSelect">
+            <option value="">全モデル</option>
+            <option value="iPhone 18 Pro Max">iPhone 18 Pro Max</option>
+            <option value="iPhone 18 Pro">iPhone 18 Pro</option>
+        </select>
+        <select id="capacitySelect">
+            <option value="">全容量</option>
+            <option value="256GB">256GB</option>
+            <option value="512GB">512GB</option>
+            <option value="1TB">1TB</option>
+            <option value="2TB">2TB</option>
+        </select>
+        <button class="btn btn-sort active" id="btnSortPrice" onclick="setSort('price')">最高価格順</button>
+        <button class="btn btn-sort" id="btnSortDiff" onclick="setSort('diff')">店舗間差額順</button>
+        <button class="btn btn-sort" id="btnSortRate" onclick="setSort('rate')">還元率順</button>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>機種名</th>
+                    <th class="center">容量</th>
+                    <th>カラー</th>
+                    <th class="num">最高買取価格</th>
+                    <th class="center">最高買取店</th>
+                    <th class="num">店舗間差額</th>
+                    <th class="num">想定定価</th>
+                    <th class="num">差益(利益)</th>
+                    <th class="num">還元率</th>
+                    <th class="center">JANコード</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const rawData = [{"model": "iPhone 18 Pro Max", "capacity": "256GB", "color": "バーガンディ", "jan": "4549995734645", "best_store": "テスト店", "best_price": 245000, "price_diff": 0, "official_price": 239800, "profit_jpy": 5200, "profit_rate": 102.2, "store_prices": {"テスト店": 245000}}];
+    const allStores = ["テスト店"];
+    let currentSort = 'price';
+
+    function renderTable() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const modelFilter = document.getElementById('modelSelect').value;
+        const capFilter = document.getElementById('capacitySelect').value;
+
+        let filtered = rawData.filter(it => {
+            const matchSearch = !search || 
+                it.model.toLowerCase().includes(search) || 
+                it.capacity.toLowerCase().includes(search) || 
+                it.color.toLowerCase().includes(search) || 
+                it.jan.includes(search);
+            const matchModel = !modelFilter || it.model === modelFilter;
+            const matchCap = !capFilter || it.capacity === capFilter;
+            return matchSearch && matchModel && matchCap;
+        });
+
+        if (currentSort === 'price') {
+            filtered.sort((a, b) => b.best_price - a.best_price);
+        } else if (currentSort === 'diff') {
+            filtered.sort((a, b) => b.price_diff - a.price_diff);
+        } else if (currentSort === 'rate') {
+            filtered.sort((a, b) => (b.profit_rate || 0) - (a.profit_rate || 0));
+        }
+
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = filtered.map(it => {
+            const diffTag = it.price_diff > 0 
+                ? `<span class="tag-diff">+${it.price_diff.toLocaleString()}円</span>` 
+                : `<span style="color:#94a3b8;">±0円</span>`;
+            const profitStr = it.profit_jpy > 0 ? `+${it.profit_jpy.toLocaleString()}円` : (it.profit_jpy ? `${it.profit_jpy.toLocaleString()}円` : '-');
+            const rateStr = it.profit_rate ? `${it.profit_rate}%` : '-';
+            const officialStr = it.official_price ? `${it.official_price.toLocaleString()}円` : '-';
+
+            return `
+                <tr>
+                    <td><strong>${it.model}</strong></td>
+                    <td class="center"><span style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:600;">${it.capacity}</span></td>
+                    <td>${it.color}</td>
+                    <td class="num price-highlight">${it.best_price.toLocaleString()}円</td>
+                    <td class="center"><span class="tag-best">${it.best_store}</span></td>
+                    <td class="num">${diffTag}</td>
+                    <td class="num" style="color:#64748b;">${officialStr}</td>
+                    <td class="num" style="font-weight:600; color:${it.profit_jpy >= 0 ? '#10b981' : '#64748b'}">${profitStr}</td>
+                    <td class="num" style="font-weight:700; color:${it.profit_rate >= 100 ? '#ef4444' : '#64748b'}">${rateStr}</td>
+                    <td class="center" style="font-family:monospace; color:#64748b; font-size:0.8rem;">${it.jan}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function setSort(type) {
+        currentSort = type;
+        document.querySelectorAll('.btn-sort').forEach(b => b.classList.remove('active'));
+        if (type === 'price') document.getElementById('btnSortPrice').classList.add('active');
+        if (type === 'diff') document.getElementById('btnSortDiff').classList.add('active');
+        if (type === 'rate') document.getElementById('btnSortRate').classList.add('active');
+        renderTable();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderTable);
+    document.getElementById('modelSelect').addEventListener('change', renderTable);
+    document.getElementById('capacitySelect').addEventListener('change', renderTable);
+
+    renderTable();
+</script>
+</body>
+</html>

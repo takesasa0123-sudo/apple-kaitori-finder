@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Apple買取プラス判定",
+    "slug": "apple-kaitori-profit-finder",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.applekaitori.profitfinder"
+    },
+    "android": {
+      "package": "com.applekaitori.profitfinder",
+      "versionCode": 1
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

@@ -1,0 +1,486 @@
+{
+  "scraped_at": "2026-10-11T11:44:09.618218",
+  "total_items": 32,
+  "items": [
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "2TB",
+      "color": "バーガンディ",
+      "jan": "4549995734287",
+      "best_store": "買取ルデヤ",
+      "best_price": 380500,
+      "price_diff": 0,
+      "official_price": 259800,
+      "profit_jpy": 120700,
+      "profit_rate": 146.5,
+      "store_prices": {
+        "買取ルデヤ": 380500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "2TB",
+      "color": "ブラック",
+      "jan": "4549995734263",
+      "best_store": "買取ルデヤ",
+      "best_price": 370500,
+      "price_diff": 0,
+      "official_price": 259800,
+      "profit_jpy": 110700,
+      "profit_rate": 142.6,
+      "store_prices": {
+        "買取ルデヤ": 370500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "2TB",
+      "color": "グレイシャー",
+      "jan": "4549995734294",
+      "best_store": "買取ルデヤ",
+      "best_price": 370500,
+      "price_diff": 0,
+      "official_price": 259800,
+      "profit_jpy": 110700,
+      "profit_rate": 142.6,
+      "store_prices": {
+        "買取ルデヤ": 370500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "2TB",
+      "color": "シルバー",
+      "jan": "4549995734270",
+      "best_store": "買取ルデヤ",
+      "best_price": 370500,
+      "price_diff": 0,
+      "official_price": 259800,
+      "profit_jpy": 110700,
+      "profit_rate": 142.6,
+      "store_prices": {
+        "買取ルデヤ": 370500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "1TB",
+      "color": "バーガンディ",
+      "jan": "4549995734249",
+      "best_store": "買取ルデヤ",
+      "best_price": 308500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 88700,
+      "profit_rate": 140.4,
+      "store_prices": {
+        "買取ルデヤ": 308500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "1TB",
+      "color": "ブラック",
+      "jan": "4549995734225",
+      "best_store": "買取ルデヤ",
+      "best_price": 295500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 75700,
+      "profit_rate": 134.4,
+      "store_prices": {
+        "買取ルデヤ": 295500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "1TB",
+      "color": "グレイシャー",
+      "jan": "4549995734256",
+      "best_store": "買取ルデヤ",
+      "best_price": 295500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 75700,
+      "profit_rate": 134.4,
+      "store_prices": {
+        "買取ルデヤ": 295500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "1TB",
+      "color": "シルバー",
+      "jan": "4549995734232",
+      "best_store": "買取ルデヤ",
+      "best_price": 295500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 75700,
+      "profit_rate": 134.4,
+      "store_prices": {
+        "買取ルデヤ": 295500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "512GB",
+      "color": "バーガンディ",
+      "jan": "4549995734201",
+      "best_store": "買取ルデヤ",
+      "best_price": 248500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 58700,
+      "profit_rate": 130.9,
+      "store_prices": {
+        "買取ルデヤ": 248500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "512GB",
+      "color": "ブラック",
+      "jan": "4549995734188",
+      "best_store": "買取ルデヤ",
+      "best_price": 235500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 45700,
+      "profit_rate": 124.1,
+      "store_prices": {
+        "買取ルデヤ": 235500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "512GB",
+      "color": "グレイシャー",
+      "jan": "4549995734218",
+      "best_store": "買取ルデヤ",
+      "best_price": 235500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 45700,
+      "profit_rate": 124.1,
+      "store_prices": {
+        "買取ルデヤ": 235500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "512GB",
+      "color": "シルバー",
+      "jan": "4549995734195",
+      "best_store": "買取ルデヤ",
+      "best_price": 229500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 39700,
+      "profit_rate": 120.9,
+      "store_prices": {
+        "買取ルデヤ": 229500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "256GB",
+      "color": "バーガンディ",
+      "jan": "4549995734164",
+      "best_store": "買取ルデヤ",
+      "best_price": 212500,
+      "price_diff": 0,
+      "official_price": 159800,
+      "profit_jpy": 52700,
+      "profit_rate": 133.0,
+      "store_prices": {
+        "買取ルデヤ": 212500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "256GB",
+      "color": "ブラック",
+      "jan": "4549995734140",
+      "best_store": "買取ルデヤ",
+      "best_price": 195500,
+      "price_diff": 0,
+      "official_price": 159800,
+      "profit_jpy": 35700,
+      "profit_rate": 122.3,
+      "store_prices": {
+        "買取ルデヤ": 195500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "256GB",
+      "color": "グレイシャー",
+      "jan": "4549995734171",
+      "best_store": "買取ルデヤ",
+      "best_price": 195500,
+      "price_diff": 0,
+      "official_price": 159800,
+      "profit_jpy": 35700,
+      "profit_rate": 122.3,
+      "store_prices": {
+        "買取ルデヤ": 195500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro",
+      "capacity": "256GB",
+      "color": "シルバー",
+      "jan": "4549995734157",
+      "best_store": "買取ルデヤ",
+      "best_price": 191500,
+      "price_diff": 0,
+      "official_price": 159800,
+      "profit_jpy": 31700,
+      "profit_rate": 119.8,
+      "store_prices": {
+        "買取ルデヤ": 191500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "2TB",
+      "color": "バーガンディ",
+      "jan": "4549995735246",
+      "best_store": "買取ルデヤ",
+      "best_price": 397500,
+      "price_diff": 0,
+      "official_price": 289800,
+      "profit_jpy": 107700,
+      "profit_rate": 137.2,
+      "store_prices": {
+        "買取ルデヤ": 397500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "2TB",
+      "color": "ブラック",
+      "jan": "4549995735147",
+      "best_store": "買取ルデヤ",
+      "best_price": 385500,
+      "price_diff": 0,
+      "official_price": 289800,
+      "profit_jpy": 95700,
+      "profit_rate": 133.0,
+      "store_prices": {
+        "買取ルデヤ": 385500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "2TB",
+      "color": "グレイシャー",
+      "jan": "4549995735291",
+      "best_store": "買取ルデヤ",
+      "best_price": 385500,
+      "price_diff": 0,
+      "official_price": 289800,
+      "profit_jpy": 95700,
+      "profit_rate": 133.0,
+      "store_prices": {
+        "買取ルデヤ": 385500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "2TB",
+      "color": "シルバー",
+      "jan": "4549995735192",
+      "best_store": "買取ルデヤ",
+      "best_price": 385500,
+      "price_diff": 0,
+      "official_price": 289800,
+      "profit_jpy": 95700,
+      "profit_rate": 133.0,
+      "store_prices": {
+        "買取ルデヤ": 385500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "1TB",
+      "color": "バーガンディ",
+      "jan": "4549995735048",
+      "best_store": "買取ルデヤ",
+      "best_price": 347500,
+      "price_diff": 0,
+      "official_price": 249800,
+      "profit_jpy": 97700,
+      "profit_rate": 139.1,
+      "store_prices": {
+        "買取ルデヤ": 347500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "1TB",
+      "color": "ブラック",
+      "jan": "4549995734942",
+      "best_store": "買取ルデヤ",
+      "best_price": 327500,
+      "price_diff": 0,
+      "official_price": 249800,
+      "profit_jpy": 77700,
+      "profit_rate": 131.1,
+      "store_prices": {
+        "買取ルデヤ": 327500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "1TB",
+      "color": "グレイシャー",
+      "jan": "4549995735093",
+      "best_store": "買取ルデヤ",
+      "best_price": 327500,
+      "price_diff": 0,
+      "official_price": 249800,
+      "profit_jpy": 77700,
+      "profit_rate": 131.1,
+      "store_prices": {
+        "買取ルデヤ": 327500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "1TB",
+      "color": "シルバー",
+      "jan": "4549995734997",
+      "best_store": "買取ルデヤ",
+      "best_price": 327500,
+      "price_diff": 0,
+      "official_price": 249800,
+      "profit_jpy": 77700,
+      "profit_rate": 131.1,
+      "store_prices": {
+        "買取ルデヤ": 327500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "512GB",
+      "color": "バーガンディ",
+      "jan": "4549995734843",
+      "best_store": "買取ルデヤ",
+      "best_price": 281500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 61700,
+      "profit_rate": 128.1,
+      "store_prices": {
+        "買取ルデヤ": 281500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "512GB",
+      "color": "ブラック",
+      "jan": "4549995734744",
+      "best_store": "買取ルデヤ",
+      "best_price": 262500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 42700,
+      "profit_rate": 119.4,
+      "store_prices": {
+        "買取ルデヤ": 262500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "512GB",
+      "color": "グレイシャー",
+      "jan": "4549995734898",
+      "best_store": "買取ルデヤ",
+      "best_price": 262500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 42700,
+      "profit_rate": 119.4,
+      "store_prices": {
+        "買取ルデヤ": 262500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "512GB",
+      "color": "シルバー",
+      "jan": "4549995734799",
+      "best_store": "買取ルデヤ",
+      "best_price": 259500,
+      "price_diff": 0,
+      "official_price": 219800,
+      "profit_jpy": 39700,
+      "profit_rate": 118.1,
+      "store_prices": {
+        "買取ルデヤ": 259500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "256GB",
+      "color": "バーガンディ",
+      "jan": "4549995734645",
+      "best_store": "買取ルデヤ",
+      "best_price": 244500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 54700,
+      "profit_rate": 128.8,
+      "store_prices": {
+        "買取ルデヤ": 244500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "256GB",
+      "color": "ブラック",
+      "jan": "4549995734546",
+      "best_store": "買取ルデヤ",
+      "best_price": 225500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 35700,
+      "profit_rate": 118.8,
+      "store_prices": {
+        "買取ルデヤ": 225500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "256GB",
+      "color": "グレイシャー",
+      "jan": "4549995734690",
+      "best_store": "買取ルデヤ",
+      "best_price": 225500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 35700,
+      "profit_rate": 118.8,
+      "store_prices": {
+        "買取ルデヤ": 225500
+      }
+    },
+    {
+      "model_name": "iPhone 18 Pro Max",
+      "capacity": "256GB",
+      "color": "シルバー",
+      "jan": "4549995734591",
+      "best_store": "買取ルデヤ",
+      "best_price": 223500,
+      "price_diff": 0,
+      "official_price": 189800,
+      "profit_jpy": 33700,
+      "profit_rate": 117.8,
+      "store_prices": {
+        "買取ルデヤ": 223500
+      }
+    }
+  ]
+}
