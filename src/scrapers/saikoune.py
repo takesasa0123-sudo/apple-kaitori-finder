@@ -59,10 +59,18 @@ class SaikouneScraper(BaseScraper):
                 continue
 
             m_type = cols[0]  # Max, Pro
-            model_name = "iPhone 18 Pro Max" if "Max" in m_type else "iPhone 18 Pro"
+            if "Max" in m_type:
+                model_name = "iPhone 18 Pro Max"
+            elif "Pro" in m_type:
+                model_name = "iPhone 18 Pro"
+            else:
+                continue
+
             cap_raw = cols[1]
             capacity = f"{cap_raw}GB" if cap_raw.isdigit() else cap_raw
             color = self.normalize_color(cols[2])
+            if not color:
+                continue
 
             raw_title = f"{model_name} {capacity} {color}"
 

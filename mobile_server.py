@@ -22,10 +22,14 @@ import subprocess
 import threading
 import time
 import webbrowser
-from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone, timedelta
 from http.server import HTTPServer, ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
+
+JST = timezone(timedelta(hours=9))
+SCRAPING_LOCK = threading.Lock()
 
 from config import BASE_DIR, OUTPUT_DIR
 from src.comparator import PriceComparator
@@ -857,95 +861,105 @@ if (window.location.protocol.startsWith('http')) {{
 
 
 def collect_all_mobile_data() -> Dict[str, Any]:
-    """iPhone 全機種 + 他Apple Store商品の最新データを一括収集してモバイル用JSON構造を返す"""
-    logger.info("=== スマホアプリ用 最新価格データの収集を開始します ===")
+    """iPhone 全機種 + 他Apple Store商品の最新データを並行収集してモバイル用JSON構造を返す"""
+    with SCRAPING_LOCK:
+        logger.info("=== スマホアプリ用 最新価格データの並行収集を開始します ===")
 
-    # 1. Apple公式HPからiPhone 18シリーズのリアルタイム定価を取得
-    apple_scraper = AppleOfficialScraper()
-    apple_catalog = {}
-    try:
-        apple_catalog = apple_scraper.get_official_catalog()
-    except Exception as e:
-        logger.warning("Apple公式HP取得警告: %s", e)
+        apple_catalog = {}
+        all_records = []
+        other_items = []
 
-    # 2. 主要買取店からiPhone 18シリーズを一括取得
-    scrapers = [
-        Kaitori1ChomeScraper(),
-        RudeyaScraper(),
-        MorimoriScraper(),
-        SaikouneScraper(),
-    ]
-    all_records = []
-    for sc in scrapers:
-        try:
-            recs = sc.scrape()
-            all_records.extend(recs)
-        except Exception as e:
-            logger.warning("%s 取得エラー: %s", sc.store_name, e)
+        # 全スクレイパーを並行実行 (所要時間を約1/6に短縮)
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            f_apple = executor.submit(AppleOfficialScraper().get_official_catalog)
+            f_1chome = executor.submit(Kaitori1ChomeScraper().scrape)
+            f_rudeya = executor.submit(RudeyaScraper().scrape)
+            f_mori = executor.submit(MorimoriScraper().scrape)
+            f_saikou = executor.submit(SaikouneScraper().scrape)
+            f_other = executor.submit(AppleOtherScraper().scrape_and_compare)
 
-    comparator = PriceComparator(all_records, official_catalog=apple_catalog)
-    iphone_items = comparator.compare()
+            try:
+                apple_catalog = f_apple.result()
+            except Exception as e:
+                logger.warning("Apple公式HP取得警告: %s", e)
 
-    unified_items: List[Dict[str, Any]] = []
-    for it in iphone_items:
-        item_id = f"iphone_{it.model_name}_{it.capacity}_{it.color}".replace(" ", "_")
-        unified_items.append({
-            "id": item_id,
-            "category": "iPhone",
-            "model_name": it.model_name,
-            "capacity": it.capacity,
-            "color": it.color,
-            "part_number": it.part_number or "",
-            "jan": it.jan or "",
-            "best_store": it.best_store,
-            "best_price": it.best_price,
-            "lowest_store": it.lowest_store,
-            "lowest_price": it.lowest_price,
-            "price_diff": it.price_diff,
-            "official_price": it.official_price or 0,
-            "profit_jpy": it.profit_jpy if it.profit_jpy is not None else -999999,
-            "profit_rate": it.profit_rate if it.profit_rate is not None else 0.0,
-            "store_prices": it.store_prices,
-        })
+            for name, fut in [
+                ("買取1丁目", f_1chome),
+                ("買取ルデヤ", f_rudeya),
+                ("森森買取", f_mori),
+                ("最高値ナビ", f_saikou),
+            ]:
+                try:
+                    recs = fut.result()
+                    all_records.extend(recs)
+                except Exception as e:
+                    logger.warning("%s 取得エラー: %s", name, e)
 
-    # 3. 他のApple Store商品 (Mac / iPad / Apple Watch / AirPods / Apple Pencil) を取得
-    other_scraper = AppleOtherScraper()
-    try:
-        other_items = other_scraper.scrape_and_compare()
+            try:
+                other_items = f_other.result()
+            except Exception as e:
+                logger.warning("他Apple商品の取得エラー: %s", e)
+
+        comparator = PriceComparator(all_records, official_catalog=apple_catalog)
+        iphone_items = comparator.compare()
+
+        unified_items: List[Dict[str, Any]] = []
+        for it in iphone_items:
+            item_id = f"iphone_{it.model_name}_{it.capacity}_{it.color}".replace(" ", "_")
+            unified_items.append({
+                "id": item_id,
+                "category": "iPhone",
+                "model_name": it.model_name,
+                "capacity": it.capacity,
+                "color": it.color,
+                "part_number": it.part_number or "",
+                "jan": it.jan or "",
+                "best_store": it.best_store,
+                "best_price": it.best_price,
+                "lowest_store": it.lowest_store,
+                "lowest_price": it.lowest_price,
+                "price_diff": it.price_diff,
+                "official_price": it.official_price or 0,
+                "profit_jpy": it.profit_jpy if it.profit_jpy is not None else -999999,
+                "profit_rate": it.profit_rate if it.profit_rate is not None else 0.0,
+                "store_prices": it.store_prices,
+            })
+
         unified_items.extend(other_items)
-    except Exception as e:
-        logger.warning("他Apple商品の取得エラー: %s", e)
 
-    # 統計サマリー計算
-    iphone_no_loss = [x for x in unified_items if x["category"] == "iPhone" and x["profit_jpy"] >= 0]
-    iphone_profit_1000 = [x for x in unified_items if x["category"] == "iPhone" and x["profit_jpy"] >= 1000]
-    other_no_loss = [x for x in unified_items if x["category"] != "iPhone" and x["profit_jpy"] >= 0]
+        # 統計サマリー計算
+        iphone_no_loss = [x for x in unified_items if x["category"] == "iPhone" and x["profit_jpy"] >= 0]
+        iphone_profit_1000 = [x for x in unified_items if x["category"] == "iPhone" and x["profit_jpy"] >= 1000]
+        other_no_loss = [x for x in unified_items if x["category"] != "iPhone" and x["profit_jpy"] >= 0]
 
-    payload = {
-        "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "summary": {
-            "total_count": len(unified_items),
-            "iphone_no_loss_count": len(iphone_no_loss),
-            "iphone_profit_1000_count": len(iphone_profit_1000),
-            "other_no_loss_count": len(other_no_loss),
-        },
-        "items": unified_items,
-    }
+        updated_at_jst = datetime.now(JST).strftime("%Y-%m-%d %H:%M:%S")
 
-    # ファイル保存
-    MOBILE_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
-    MOBILE_DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    OUTPUT_MOBILE_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    generate_mobile_html(payload)
+        payload = {
+            "updated_at": updated_at_jst,
+            "summary": {
+                "total_count": len(unified_items),
+                "iphone_no_loss_count": len(iphone_no_loss),
+                "iphone_profit_1000_count": len(iphone_profit_1000),
+                "other_no_loss_count": len(other_no_loss),
+            },
+            "items": unified_items,
+        }
 
-    logger.info(
-        "モバイルデータ更新完了: 全%d件 (iPhone利益1000円以上:%d件 / iPhone損なし:%d件 / 他Apple商品損なし:%d件)",
-        len(unified_items),
-        len(iphone_profit_1000),
-        len(iphone_no_loss),
-        len(other_no_loss),
-    )
-    return payload
+        # ファイル保存
+        MOBILE_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
+        MOBILE_DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        OUTPUT_MOBILE_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        generate_mobile_html(payload)
+
+        logger.info(
+            "モバイルデータ更新完了: 全%d件 (iPhone利益1000円以上:%d件 / iPhone損なし:%d件 / 他Apple商品損なし:%d件) 更新時刻(JST): %s",
+            len(unified_items),
+            len(iphone_profit_1000),
+            len(iphone_no_loss),
+            len(other_no_loss),
+            updated_at_jst,
+        )
+        return payload
 
 
 class MobileAPIHandler(SimpleHTTPRequestHandler):
@@ -997,22 +1011,39 @@ class MobileAPIHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
         elif self.path.startswith("/api/refresh"):
-            data = collect_all_mobile_data()
-            body = json.dumps(data, ensure_ascii=False).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(body)
-        elif self.path.startswith("/api/latest"):
-            if OUTPUT_MOBILE_JSON.exists():
-                body = OUTPUT_MOBILE_JSON.read_bytes()
-            else:
+            try:
                 data = collect_all_mobile_data()
                 body = json.dumps(data, ensure_ascii=False).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(body)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(body)
+            except Exception as e:
+                logger.error("/api/refresh エラー: %s", e)
+                if OUTPUT_MOBILE_JSON.exists():
+                    body = OUTPUT_MOBILE_JSON.read_bytes()
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(body)
+                else:
+                    self.send_response(500)
+                    self.end_headers()
+        elif self.path.startswith("/api/latest"):
+            try:
+                if OUTPUT_MOBILE_JSON.exists():
+                    body = OUTPUT_MOBILE_JSON.read_bytes()
+                else:
+                    data = collect_all_mobile_data()
+                    body = json.dumps(data, ensure_ascii=False).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(body)
+            except Exception as e:
+                logger.error("/api/latest エラー: %s", e)
+                self.send_response(500)
+                self.end_headers()
         else:
             super().do_GET()
 
@@ -1056,12 +1087,12 @@ def start_public_tunnel(port: int) -> Tuple[Optional[subprocess.Popen], Optional
         return None, None
 
 
-def background_periodic_refresh(interval_sec: int = 3600):
-    """クラウドサーバー稼働中に定期的に最新価格を自動更新 (デフォルト: 1時間毎)"""
+def background_periodic_refresh(interval_sec: int = 600):
+    """クラウドサーバー稼働中に定期的に最新価格を自動更新 (デフォルト: 10分毎)"""
     while True:
         time.sleep(interval_sec)
         try:
-            logger.info("定期自動更新: 最新価格データを収集中...")
+            logger.info("定期自動更新: 最新価格データを並行収集中...")
             collect_all_mobile_data()
         except Exception as e:
             logger.warning("定期自動更新エラー: %s", e)
@@ -1085,15 +1116,13 @@ def main():
     port = args.port if args.port > 0 else int(os.environ.get("PORT", 8765))
 
     if is_cloud:
-        # クラウドモード: Render等のポートバインド期限に即応するため、即座にサーバーを起動
+        # クラウドモード: Render等のポートバインド期限に即応するため即座に応答開始
         logger.info(f"=== クラウドモード (Render/Railway) で起動します (Port: {port}) ===")
-        if not OUTPUT_MOBILE_HTML.exists() or not OUTPUT_MOBILE_JSON.exists():
-            threading.Thread(target=collect_all_mobile_data, daemon=True).start()
-        else:
-            logger.info("既存の最新スナップショットデータを利用して即時稼働します。")
+        # 起動直後にバックグラウンドで最新データを即時自動収集
+        threading.Thread(target=collect_all_mobile_data, daemon=True).start()
 
-        # バックグラウンド定期自動更新スレッド開始 (1時間おき)
-        threading.Thread(target=background_periodic_refresh, args=(3600,), daemon=True).start()
+        # バックグラウンド定期自動更新スレッド開始 (10分おき)
+        threading.Thread(target=background_periodic_refresh, args=(600,), daemon=True).start()
 
         server = ThreadingHTTPServer(("0.0.0.0", port), MobileAPIHandler)
         logger.info(f"クラウドサーバーがポート {port} で稼働開始しました。")
